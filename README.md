@@ -50,3 +50,9 @@ Quick path:
 3. Add environment variables from `.env.example`.
 4. Attach your domain + HTTPS.
 5. Enable PayChangu webhook verification before real billing.
+
+
+## GitHub Pages note
+
+If you open this repo on GitHub Pages, use the root `index.html` (it redirects to `public/index.html`).
+For full functionality (login, tools, payments), deploy the Node backend as described in `DEPLOYMENT.md` because static GitHub Pages alone cannot run `/api/*` endpoints.
