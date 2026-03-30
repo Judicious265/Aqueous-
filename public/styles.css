@@ -150,3 +150,16 @@ pre {
 .hidden {
   display: none;
 }
+
+.api-config {
+  margin: 0.8rem 0;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px dashed #3d568a;
+  background: #101a2e;
+}
+
+.api-config summary {
+  cursor: pointer;
+  font-weight: 600;
+}

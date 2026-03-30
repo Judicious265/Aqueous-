@@ -30,6 +30,13 @@
           <button class="tab" data-tab="login">Login</button>
         </div>
 
+        <details class="api-config">
+          <summary>API server settings (for GitHub Pages)</summary>
+          <p class="muted small">If hosted on static pages, set your backend URL (example: https://your-backend.onrender.com).</p>
+          <input id="apiBaseUrl" placeholder="https://your-backend-domain.com" />
+          <button type="button" id="saveApiBaseBtn">Save API URL</button>
+        </details>
+
         <form id="authForm">
           <input type="email" id="email" placeholder="Email address" required />
           <input type="password" id="password" placeholder="Password (min 8 chars)" required />

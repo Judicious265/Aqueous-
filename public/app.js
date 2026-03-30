@@ -11,9 +11,12 @@ const toast = document.getElementById('toast');
 const paymentMethod = document.getElementById('paymentMethod');
 const cardNumber = document.getElementById('cardNumber');
 const paypalEmail = document.getElementById('paypalEmail');
+const apiBaseInput = document.getElementById('apiBaseUrl');
+const saveApiBaseBtn = document.getElementById('saveApiBaseBtn');
 
 let authMode = 'register';
 let token = localStorage.getItem('token') || null;
+let apiBase = (localStorage.getItem('apiBaseUrl') || (window.HUMANIZER_API_BASE || '')).trim().replace(/\/$/, '');
 
 function showToast(message) {
   toast.textContent = message;
@@ -35,7 +38,8 @@ function setAuthState(user) {
 }
 
 async function api(path, method = 'GET', body) {
-  const response = await fetch(path, {
+  const url = `${apiBase}${path}`;
+  const response = await fetch(url, {
     method,
     headers: {
       'Content-Type': 'application/json',
@@ -44,10 +48,24 @@ async function api(path, method = 'GET', body) {
     body: body ? JSON.stringify(body) : undefined
   });
 
-  const data = await response.json();
+  const contentType = response.headers.get('content-type') || '';
+  const raw = await response.text();
+
+  if (!contentType.includes('application/json')) {
+    throw new Error('API response was HTML, not JSON. Open "API server settings" and set your backend URL.');
+  }
+
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    throw new Error('Server returned invalid JSON.');
+  }
+
   if (!response.ok) {
     throw new Error(data.error || 'Request failed');
   }
+
   return data;
 }
 
@@ -153,6 +171,16 @@ document.getElementById('payBtn').addEventListener('click', async () => {
     showToast(error.message);
     resultEl.textContent = error.message;
   }
+});
+
+if (apiBaseInput) {
+  apiBaseInput.value = apiBase;
+}
+
+saveApiBaseBtn?.addEventListener('click', () => {
+  apiBase = (apiBaseInput.value || '').trim().replace(/\/$/, '');
+  localStorage.setItem('apiBaseUrl', apiBase);
+  showToast(apiBase ? `API URL saved: ${apiBase}` : 'Using same-origin API (/api).');
 });
 
 loadSession();

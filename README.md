@@ -56,3 +56,12 @@ Quick path:
 
 If you open this repo on GitHub Pages, use the root `index.html` (it redirects to `public/index.html`).
 For full functionality (login, tools, payments), deploy the Node backend as described in `DEPLOYMENT.md` because static GitHub Pages alone cannot run `/api/*` endpoints.
+
+
+### Fix for "Unexpected token '<' ... is not valid JSON"
+
+This error means your frontend requested an API endpoint but got an HTML page back (not JSON). This usually happens when the frontend is on GitHub Pages but backend API is not set.
+
+- Open **API server settings** in the UI.
+- Set your deployed backend URL (example: `https://your-backend.onrender.com`).
+- Save and retry login/tool actions.
