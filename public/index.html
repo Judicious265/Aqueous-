@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Humanizer AI Platform</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <h1>Humanizer AI</h1>
+        <p>Humanize text, detect AI in text/media labels, and manage subscriptions in one place.</p>
+      </div>
+      <div class="plan-card">
+        <h2>Pricing</h2>
+        <p><strong>1 free trial/day</strong> for each account.</p>
+        <p><strong>Premium:</strong> $12 every 3 months.</p>
+        <p>Pay using <strong>Visa</strong> or <strong>PayPal</strong> via <strong>PayChangu</strong>.</p>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="panel" id="authPanel">
+        <h2>Create account / Sign in</h2>
+        <p class="muted">Everyone must use an email account before accessing tools.</p>
+
+        <div class="tabs">
+          <button class="tab active" data-tab="register">Register</button>
+          <button class="tab" data-tab="login">Login</button>
+        </div>
+
+        <form id="authForm">
+          <input type="email" id="email" placeholder="Email address" required />
+          <input type="password" id="password" placeholder="Password (min 8 chars)" required />
+          <button type="submit" id="authSubmit">Create account</button>
+        </form>
+      </section>
+
+      <section class="panel hidden" id="workspacePanel">
+        <div class="workspace-header">
+          <h2>Workspace</h2>
+          <span id="userBadge"></span>
+        </div>
+        <p class="muted" id="usageStatus"></p>
+
+        <div class="tabs">
+          <button class="tab active" data-tool="humanize">Humanize text</button>
+          <button class="tab" data-tool="detect">Detect AI text/media</button>
+        </div>
+
+        <div id="humanizeTool" class="tool">
+          <textarea id="humanizeInput" rows="6" placeholder="Paste text to humanize..."></textarea>
+          <button id="humanizeBtn">Run Humanizer</button>
+        </div>
+
+        <div id="detectTool" class="tool hidden">
+          <textarea id="detectInput" rows="6" placeholder="Paste text to detect AI patterns..."></textarea>
+          <input id="mediaName" placeholder="Optional media file name (e.g. voice-note.mp3)" />
+          <button id="detectBtn">Run Detection</button>
+        </div>
+
+        <pre id="result"></pre>
+      </section>
+
+      <section class="panel hidden" id="billingPanel">
+        <h2>Upgrade to Premium ($12 / 3 months)</h2>
+        <p class="muted">Unlimited usage after upgrade.</p>
+
+        <label>Payment method</label>
+        <select id="paymentMethod">
+          <option value="visa">Visa</option>
+          <option value="paypal">PayPal</option>
+        </select>
+
+        <input id="cardNumber" placeholder="Visa card number" />
+        <input id="paypalEmail" placeholder="PayPal email" class="hidden" />
+
+        <button id="payBtn">Pay with PayChangu</button>
+        <p class="muted small">Production note: configure PayChangu secret/webhook in server env variables.</p>
+      </section>
+    </main>
+
+    <p id="toast" class="toast"></p>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
