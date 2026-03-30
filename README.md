@@ -65,3 +65,24 @@ This error means your frontend requested an API endpoint but got an HTML page ba
 - Open **API server settings** in the UI.
 - Set your deployed backend URL (example: `https://your-backend.onrender.com`).
 - Save and retry login/tool actions.
+
+
+## Render setup (exact values)
+
+When creating your **Web Service** on Render, use:
+
+- **Root Directory:** *(leave empty)*
+- **Build Command:** `npm install`
+- **Start Command:** `npm start`
+
+Then add environment variables:
+
+- `NODE_ENV=production`
+- `PAYCHANGU_SECRET_KEY=your_real_key`
+- `PAYCHANGU_CHECKOUT_URL=https://api.paychangu.com/checkout`
+
+After deploy, your API base URL will look like:
+
+`https://your-service-name.onrender.com`
+
+If your frontend is hosted on GitHub Pages, open **API server settings** in the app and paste that Render URL.
