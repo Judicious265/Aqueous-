@@ -86,3 +86,21 @@ After deploy, your API base URL will look like:
 `https://your-service-name.onrender.com`
 
 If your frontend is hosted on GitHub Pages, open **API server settings** in the app and paste that Render URL.
+
+
+### Render "Environment Variable" fields (Name / Value)
+
+In Render, each variable has 2 inputs:
+
+- **Name** = variable key
+- **Value** = actual secret/content
+
+Use these pairs:
+
+- Name: `NODE_ENV` → Value: `production`
+- Name: `PAYCHANGU_SECRET_KEY` → Value: `your_real_paychangu_secret_key`
+- Name: `PAYCHANGU_CHECKOUT_URL` → Value: `https://api.paychangu.com/checkout`
+
+Optional:
+
+- Name: `PORT` → Value: *(leave empty on Render unless required; Render injects `PORT` automatically)*
