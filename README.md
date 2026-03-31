@@ -104,3 +104,23 @@ Use these pairs:
 Optional:
 
 - Name: `PORT` → Value: *(leave empty on Render unless required; Render injects `PORT` automatically)*
+
+
+## Render deploy failed? (Fix for `mix phx.digest` / `mix phx.server` errors)
+
+Your app is **Node.js**, not Elixir/Phoenix. If Render shows logs like:
+
+- `The task "phx.digest" could not be found`
+- `No mix.exs was found in the current directory`
+
+then Render is using wrong commands.
+
+Use these exact settings in **Settings → Build & Deploy**:
+
+- **Build Command:** `npm install`
+- **Start Command:** `npm start`
+- **Root Directory:** empty
+
+Also make sure Runtime/Environment is **Node**.
+
+Tip: this repo now includes `render.yaml` with correct Node defaults.

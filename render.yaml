@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: aqueous-humanizer-ai
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PAYCHANGU_CHECKOUT_URL
+        value: https://api.paychangu.com/checkout
+      - key: PAYCHANGU_SECRET_KEY
+        sync: false
