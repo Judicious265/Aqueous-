@@ -1,0 +1,165 @@
+:root {
+  --bg: #0b1220;
+  --card: #121a2b;
+  --muted: #9caac4;
+  --text: #f3f7ff;
+  --accent: #6ea8fe;
+  --accent-2: #38d39f;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #1e2a45, var(--bg));
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.hero {
+  max-width: 1100px;
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+}
+
+.plan-card {
+  margin-left: auto;
+  background: var(--card);
+  border: 1px solid #273455;
+  border-radius: 16px;
+  padding: 1rem;
+  min-width: 280px;
+}
+
+.grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid #273455;
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+input,
+textarea,
+select,
+button {
+  width: 100%;
+  border: 1px solid #34466f;
+  border-radius: 10px;
+  padding: 0.7rem;
+  margin-top: 0.6rem;
+  background: #0f1729;
+  color: var(--text);
+}
+
+button {
+  background: linear-gradient(120deg, var(--accent), #5f8fff);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.07);
+}
+
+.workspace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#userBadge {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: #20345a;
+  border: 1px solid #395694;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.6rem 0;
+}
+
+.tab {
+  flex: 1;
+  background: #1a2745;
+}
+
+.tab.active {
+  background: linear-gradient(120deg, var(--accent-2), #2db78a);
+}
+
+pre {
+  background: #0f1729;
+  border: 1px solid #2a395c;
+  border-radius: 10px;
+  padding: 0.8rem;
+  white-space: pre-wrap;
+  min-height: 90px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 0.84rem;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  background: #1d2f53;
+  border: 1px solid #3d5f9d;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hidden {
+  display: none;
+}
+
+.api-config {
+  margin: 0.8rem 0;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px dashed #3d568a;
+  background: #101a2e;
+}
+
+.api-config summary {
+  cursor: pointer;
+  font-weight: 600;
+}
