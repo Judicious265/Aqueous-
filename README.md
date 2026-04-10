@@ -124,3 +124,22 @@ Use these exact settings in **Settings → Build & Deploy**:
 Also make sure Runtime/Environment is **Node**.
 
 Tip: this repo now includes `render.yaml` with correct Node defaults.
+
+
+## Link with GitHub (Render + GitHub)
+
+To run this project directly from GitHub:
+
+1. Push your latest code to GitHub (`main` branch).
+2. In Render, click **New +** → **Web Service**.
+3. Choose **Build and deploy from a Git repository**.
+4. Connect your GitHub account (authorize Render if prompted).
+5. Select this repository.
+6. Use:
+   - Build Command: `npm install`
+   - Start Command: `npm start`
+   - Root Directory: *(leave empty)*
+7. Add environment variables (`NODE_ENV`, `PAYCHANGU_SECRET_KEY`, `PAYCHANGU_CHECKOUT_URL`).
+8. Click **Create Web Service**.
+
+After this, every push to `main` auto-deploys on Render (if Auto Deploy is enabled).
